@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "58459651521",
+    "project_id": "daewoobank-f3a7a",
+    "storage_bucket": "daewoobank-f3a7a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58459651521:android:cf0f07cd3f517483a28340",
+        "android_client_info": {
+          "package_name": "com.daewoo.bank"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLeZFe4D0Os8dBrptlyak6D0vxsYAMu6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
