@@ -24,16 +24,39 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String token = "Fetching token...";
 
-  @override
-  void initState() {
-    super.initState();
-    FirebaseMessaging.instance.requestPermission(); // ask notification permission
+@override
+void initState() {
+  super.initState();
+  FirebaseMessaging.instance.requestPermission();
 
-    FirebaseMessaging.instance.getToken().then((t) {
-      setState(() => token = t ?? "No token");
-      print("FCM Token: $t");
-    });
-  }
+  // Get token
+  FirebaseMessaging.instance.getToken().then((t) {
+    setState(() => token = t ?? "No token");
+    print("FCM Token: $t");
+  });
+
+  // Listen for foreground messages
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    print("Foreground message received: ${message.notification?.title}");
+
+    // Simple alert dialog
+    if (message.notification != null) {
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: Text(message.notification!.title ?? "Notification"),
+          content: Text(message.notification!.body ?? ""),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text("OK"),
+            )
+          ],
+        ),
+      );
+    }
+  });
+}
 
   @override
   Widget build(BuildContext context) {
